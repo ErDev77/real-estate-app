@@ -1,10 +1,12 @@
+"use client"
+
 import Image from "next/image";
-import ListingMapView from "./_components/ListingMapView";
+import MainBox from "./_components/MainBox";
 
 export default function Home() {
   return (
-    <div className="px-10 py-2">
-      <ListingMapView type="Sell" />
+    <div>
+      <MainBox />
     </div>
   );
 }
