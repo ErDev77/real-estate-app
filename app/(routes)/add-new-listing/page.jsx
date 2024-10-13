@@ -18,31 +18,38 @@ function AddNewListing() {
 
 
     const nextHandler =  async () => {
-        setLoader(true)
-        const { data, error } = await supabase
-        .from('listing')
-        .insert([
-            { address: selectedAddress.label, 
-              coordinates: coordinates,
-              createdBy: user?.primaryEmailAddress.emailAddress
-             },
-        ])
-        .select()
+			setLoader(true)
 
+			const { data: existingListing, error: checkError } = await supabase
+				.from('listing')
+				.select('*')
+				.eq('address', selectedAddress?.label) // Используем 'label' как строку для адреса
 
-          if(data) {
-            setLoader(false)
-            console.log("new data added", data)
-            toast("New address added")
-            router.replace('/edit-listing/'+ data[0].id)
-          } 
-          
-          if(error) {
-            setLoader(false)
-            console.log("error")
-            toast("Server Error")
-          }
-    }
+			const { data, error } = await supabase
+				.from('listing')
+				.insert([
+					{
+						address: selectedAddress.label,
+						coordinates: coordinates,
+						createdBy: user?.primaryEmailAddress.emailAddress,
+					},
+				])
+
+				.select()
+
+			if (data) {
+				setLoader(false)
+				console.log('new data added', data)
+				toast('New address added')
+				router.replace('/edit-listing/' + data[0].id)
+			}
+
+			if (error) {
+				setLoader(false)
+				console.log('error')
+				toast('Server Error')
+			}
+		}
   return (
 		<div className='mt-10 md:mx-56 lg:mx-80'>
 			<div className='p-10 flex flex-col gap-5 items-center justify-center'>
