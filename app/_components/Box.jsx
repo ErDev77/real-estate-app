@@ -11,7 +11,7 @@ const Box = ({
 			<div
 				className={twMerge(
 					`
-            bg-neutral-900
+            bg-white
             rounded-lg
             min-h-screen
             w-full

@@ -6,14 +6,16 @@ const Loading = () => {
 	return (
 		<Box
 			className='
-        h-screen
-        flex
-        items-center
-        justify-center
-		mt-16
+			fixed
+			inset-0
+			flex
+			items-center
+			justify-center
+			bg-white
+			z-50
         '
 		>
-			<BeatLoader color='#22c55e' size={20} />
+			<BeatLoader color='#blue' size={20} />
 		</Box>
 	)
 }
