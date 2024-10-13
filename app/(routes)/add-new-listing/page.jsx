@@ -23,9 +23,8 @@ function AddNewListing() {
 			const { data: existingListing, error: checkError } = await supabase
 				.from('listing')
 				.select('*')
-				.eq('address', selectedAddress?.label) // Используем 'label' как строку для адреса
-
-			const { data, error } = await supabase
+				.eq('address', selectedAddress?.label) 
+			  const { data, error } = await supabase
 				.from('listing')
 				.insert([
 					{

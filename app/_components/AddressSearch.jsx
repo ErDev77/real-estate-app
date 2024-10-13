@@ -5,7 +5,6 @@ import { MapPin } from 'lucide-react'
 import React from 'react'
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete'
 
-// Используем динамическую загрузку для отключения SSR
 const GooglePlacesAutocomplete = dynamic(
 	() => import('react-google-places-autocomplete').then(mod => mod.default),
 	{ ssr: false }
