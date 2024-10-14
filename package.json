@@ -19,6 +19,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@react-google-maps/api": "^2.20.3",
     "@supabase/supabase-js": "^2.45.4",
+    "@t3-oss/env-core": "^0.11.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.3.0",
@@ -31,8 +32,11 @@
     "react-google-places-autocomplete": "^4.1.0",
     "react-spinners": "^0.14.1",
     "sonner": "^1.5.0",
+    "stream-chat": "^8.40.9",
+    "stream-chat-react": "^12.2.0",
     "tailwind-merge": "^2.5.3",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "postcss": "^8",

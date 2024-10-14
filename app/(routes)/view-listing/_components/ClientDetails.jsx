@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function ClientDetails({listingDetails}) {
@@ -18,7 +19,10 @@ function ClientDetails({listingDetails}) {
 					<h2 className='text-gray-500'>{listingDetails?.createdBy}</h2>
 				</div>
 			</div>
+			<Link href={'/chat'}>
+			
 			<Button>Send Message</Button>
+			</Link>
 		</div>
 	)
 }
