@@ -1,10 +1,18 @@
 import { Button } from '@/components/ui/button'
-import { UserButton, useUser } from '@clerk/nextjs'
+import { SignOutButton, UserButton, useUser } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 function Header() {
 	const path = usePathname()
@@ -49,13 +57,19 @@ function Header() {
 							For Sale
 						</li>
 					</Link>
-					<li
-						className={`hover:text-primary font-semibold text-base cursor-pointer ${
-							isHomePage ? 'text-white' : ''
-						}`}
-					>
-						For Rent
-					</li>
+					<Link href={'/rent'}>
+						<li
+							className={`hover:text-primary font-semibold text-base cursor-pointer ${
+								path === '/rent'
+									? 'text-primary'
+									: isHomePage
+									? 'text-white'
+									: ''
+							}`}
+						>
+							For Rent
+						</li>
+					</Link>
 				</ul>
 			</div>
 			<div className='flex gap-2 items-center'>
@@ -66,7 +80,28 @@ function Header() {
 					</Button>
 				</Link>
 				{isSignedIn ? (
-					<UserButton />
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
+							<Image
+								src={user?.imageUrl}
+								width={35}
+								height={35}
+								alt='user profile'
+								className='rounded-full'
+							/>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent>
+							<DropdownMenuLabel>My Account</DropdownMenuLabel>
+							<DropdownMenuSeparator />
+							<DropdownMenuItem>
+								<Link href={'/user'}>
+								Profile
+								</Link>
+							</DropdownMenuItem>
+							<DropdownMenuItem>My Listings</DropdownMenuItem>
+							<DropdownMenuItem><SignOutButton>Logout</SignOutButton></DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				) : (
 					<Link href={'/sign-in'}>
 						<Button variant='outline' className='text-base font-semibold'>

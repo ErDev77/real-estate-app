@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
+import MapMarker from './MapMarker'
 
 
 const containerStyle = {
@@ -9,7 +10,7 @@ const containerStyle = {
 	borderRadius: 10
 }
 
-function GoogleMapSection({ coordinates }) {
+function GoogleMapSection({ coordinates, listing }) {
 	// const { isLoaded, loadError } = useJsApiLoader({
 	// 	id: 'google-map-script',
 	// 	googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_PLACE_API_KEY,
@@ -51,9 +52,14 @@ function GoogleMapSection({ coordinates }) {
 				zoom={10}
 				onLoad={onLoad}
 				onUnmount={onUnmount}
+				gestureHandling="greedy"
 			>
-				{/* Child components, such as markers, info windows, etc. */}
-				<></>
+				{listing.map((item, index) => (	
+				<MapMarker 
+				key={index}
+				item={item}
+				/>
+				))}
 			</GoogleMap>
 		</div>
 	)

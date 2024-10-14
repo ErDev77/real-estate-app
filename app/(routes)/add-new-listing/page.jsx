@@ -38,14 +38,14 @@ function AddNewListing() {
 
 			if (data) {
 				setLoader(false)
-				console.log('new data added', data)
+				// console.log('new data added', data)
 				toast('New address added')
 				router.replace('/edit-listing/' + data[0].id)
 			}
 
 			if (error) {
 				setLoader(false)
-				console.log('error')
+				// console.log('error')
 				toast('Server Error')
 			}
 		}
