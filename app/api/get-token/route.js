@@ -1,4 +1,4 @@
-import { currentUser } from '@clerk/nextjs/dist/types/server'
+import { currentUser } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 import { StreamChat } from 'stream-chat'
 
