@@ -4,7 +4,7 @@ import { StreamChat } from 'stream-chat'
 
 function useInitializeChatClient() {
 	const { user } = useUser()
-	const [chatClient, setChatClient] = (useState < StreamChat) | (null > null)
+	const [chatClient, setChatClient] = useState(null);
 
 	useEffect(() => {
 		if (!user?.id) return
@@ -37,7 +37,7 @@ function useInitializeChatClient() {
             .catch((error) => console.error("failed to disconnet user", error)
         ).then(() => console.log("connection closed"));
         };
-	}, [user?.id, user.fullName, user.imageUrl]);
+	}, [user?.id, user?.fullName, user?.imageUrl]);
     return chatClient
 }
 
