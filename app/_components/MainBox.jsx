@@ -16,6 +16,7 @@ function MainBox() {
 				.limit(6) 
 
 			if (data) {
+				console.log(data)
 				setListings(data)
 			}
 			if (error) {
@@ -39,13 +40,20 @@ function MainBox() {
 				</p>
 			</div>
 			<HousesTypes />
-			<div className='grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-16 pb-16 bg-slate-100'>
-				<div className='w-[100%] mx-auto'>
-					<h1 className='text-2xl sm:text-3xl font-bold mb-2 text-gray-800'>
+			<div className='bg-slate-100 pt-16 pb-16'>
+				<div className='text-center mb-8'>
+					<h1 className='text-2xl sm:text-3xl font-bold text-gray-800'>
 						We have a wide selection for everyone
 					</h1>
-					<div className='w-[700px]'>
-						<Listing listing={listings} showSearchAndFilters={false} />
+				</div>
+				<div className='w-full flex justify-center'>
+					<div className='grid  gap-4 w-[70%]'>
+						{' '}
+						{/* md:grid-cols-2 lg:grid-cols-3 */}
+						<Listing
+							listing={listings} 
+							showSearchAndFilters={false} 
+						/>
 					</div>
 				</div>
 			</div>
