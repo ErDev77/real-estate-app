@@ -33,9 +33,9 @@ function useInitializeChatClient() {
         return () => {
             setChatClient(null)
             client
-            .disconnectUser()
-            .catch((error) => console.error("failed to disconnet user", error)
-        ).then(() => console.log("connection closed"));
+            // .disconnectUser()
+            // .catch((error) => console.error("failed to disconnet user", error))
+            // .then(() => console.log("connection closed"));
         };
 	}, [user?.id, user?.fullName, user?.imageUrl]);
     return chatClient

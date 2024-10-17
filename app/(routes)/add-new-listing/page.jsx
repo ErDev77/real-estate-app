@@ -31,6 +31,7 @@ function AddNewListing() {
 						address: selectedAddress.label,
 						coordinates: coordinates,
 						createdBy: user?.primaryEmailAddress.emailAddress,
+						user_id: user.id
 					},
 				])
 

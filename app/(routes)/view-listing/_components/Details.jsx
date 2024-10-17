@@ -1,12 +1,25 @@
 import GoogleMapSection from '@/app/_components/GoogleMapSection'
 import { Button } from '@/components/ui/button'
 import { BedDouble, Drill, Home, LandPlot, MapPin, Share } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
 import ClientDetails from './ClientDetails'
+import {
+	FacebookShareButton,
+	TwitterShareButton,
+	WhatsappShareButton,
+	FacebookIcon,
+	TwitterIcon,
+	WhatsappIcon,
+} from 'react-share'
 
 function Details({listingDetails}) {
 
-
+  const [isShareVisible, setIsShareVisible] = useState(false)
+	const shareUrl = window.location.href
+	const title = `Check out this property: ${listingDetails?.address}`
+	 const handleShareClick = () => {
+			setIsShareVisible(!isShareVisible)
+		}
   return (
 		listingDetails && (
 			<div className='my-6 flex gap-2 flex-col'>
@@ -18,9 +31,22 @@ function Details({listingDetails}) {
 							{listingDetails?.address}
 						</h2>
 					</div>
-					<Button className='flex gap-2'>
+					<Button className='flex gap-2' onClick={handleShareClick}>
 						<Share /> Share
 					</Button>
+					{isShareVisible && (
+						<div className='absolute right-9 mt-0 bg-white p-3 rounded-lg shadow-lg flex space-x-5'>
+							<FacebookShareButton url={shareUrl} quote={title}>
+								<FacebookIcon size={32} round />
+							</FacebookShareButton>
+							<TwitterShareButton url={shareUrl} title={title}>
+								<TwitterIcon size={32} round />
+							</TwitterShareButton>
+							<WhatsappShareButton url={shareUrl} title={title}>
+								<WhatsappIcon size={32} round />
+							</WhatsappShareButton>
+						</div>
+					)}
 				</div>
 				<hr></hr>
 				<div className='mt-4 flex flex-col gap-3'>
